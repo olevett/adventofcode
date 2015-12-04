@@ -82,6 +82,11 @@ namespace AdventOfCode
             return true;
         }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         public Coordinate Move(char movement)
         {
             switch (movement)

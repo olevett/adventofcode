@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+
 namespace AdventOfCode
 {
     public class Day4
@@ -20,7 +21,6 @@ namespace AdventOfCode
                 if (MD5MatchesZeros(check)) return key;
                 key++;
             }
-            return 0;
         }
 
         private bool MD5MatchesZeros(string input)
@@ -38,7 +38,6 @@ namespace AdventOfCode
                 if (MD5MatchesSixZeros(check)) return key;
                 key++;
             }
-            return 0;
         }
 
         private bool MD5MatchesSixZeros(string input)
