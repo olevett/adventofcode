@@ -43,7 +43,9 @@
     <Compile Include="Day2.cs" />
     <Compile Include="Day3.cs" />
     <Compile Include="Day4.cs" />
+    <Compile Include="Day5.cs" />
     <Compile Include="Helpers\DictionaryExtensions.cs" />
+    <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -69,15 +69,6 @@ namespace AdventOfCode.Tests
         }
 
         [Theory]
-        [InlineData("a\r\nb",2)]
-        public void SplitsOnNewLines(string input, int expected)
-        {
-            var day2 = new Day2();
-            var actual = day2.SplitOnNewLines(input).Count();
-            Assert.Equal(expected, actual);
-        }
-
-        [Theory]
         [InlineData("2x3x4\r\n1x1x10", 101)]
         public void CalculatesTotalAreaCorrectly(string input, int expected)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdventOfCode.Helpers;
 
 namespace AdventOfCode
 {
@@ -10,7 +11,7 @@ namespace AdventOfCode
     {
         public int TotalArea(string input)
         {
-            return SplitOnNewLines(input).Select(ParseStringToTuple).Sum(x => CalculateArea(x));
+            return input.SplitOnNewLines().Select(ParseStringToTuple).Sum(x => CalculateArea(x));
         }
 
         public int CalculateArea(Tuple<int, int, int> input)
@@ -25,7 +26,7 @@ namespace AdventOfCode
 
         public int TotalRibbon(string input)
         {
-            return SplitOnNewLines(input).Select(ParseStringToTuple).Sum(x => CalculateRibbonLength(x));
+            return input.SplitOnNewLines().Select(ParseStringToTuple).Sum(x => CalculateRibbonLength(x));
         }
 
         public int CalculateRibbonLength(Tuple<int, int, int> input)
@@ -44,11 +45,6 @@ namespace AdventOfCode
         {
             var vals = input.Split('x').Select(int.Parse).ToList();
             return new Tuple<int, int, int>(vals[0], vals[1], vals[2]);
-        }
-
-        public IEnumerable<string> SplitOnNewLines(string input)
-        {
-            return input.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
         }
     }
 }
