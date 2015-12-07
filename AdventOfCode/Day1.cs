@@ -5,10 +5,13 @@ namespace AdventOfCode
 {
     public static class Day1
     {
+        private const char IncreaseFloor = '(';
+        private const char DecreaseFloor = ')';
+
         public static int FinalFloor(string route)
         {
-            var floorsUp = route.Count(c => c == '(');
-            var floorsDown = route.Count(c => c == ')');
+            var floorsUp = route.Count(c => c == IncreaseFloor);
+            var floorsDown = route.Count(c => c == DecreaseFloor);
             return floorsUp - floorsDown;
         }
 
@@ -21,10 +24,10 @@ namespace AdventOfCode
             {
                 switch (x)
                 {
-                    case '(':
+                    case IncreaseFloor:
                         floor++;
                         break;
-                    case ')':
+                    case DecreaseFloor:
                         floor--;
                         break;
                 }

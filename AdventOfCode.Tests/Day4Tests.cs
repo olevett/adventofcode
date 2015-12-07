@@ -7,6 +7,7 @@ namespace AdventOfCode.Tests
         private const string SecretKey = "yzbqklnj";
         private const int ActualAnswer = 282749;
         private const int ActualAnswerForSixZeros = 9962624;
+
         [Theory]
         [InlineData("abcdef", 609043)]
         [InlineData("pqrstuv", 1048970)]
