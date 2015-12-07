@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AdventOfCode.Helpers;
+using System.Text.RegularExpressions;
 
 namespace AdventOfCode
 {
@@ -36,6 +37,18 @@ namespace AdventOfCode
         public int NumberOfNiceStrings(string input)
         {
             return input.SplitOnNewLines().Select(StringIsNice).Count(x => x);
+        }
+
+        public int NumberOfNiceStrings2(string input)
+        {
+            return input.SplitOnNewLines().Count(IsNice2);
+        }
+        private Regex pairEitherSide = new Regex(@"(\w)\w\1");
+        private Regex twoPairs = new Regex(@"(\w\w)\w*\1");
+
+        public bool IsNice2(string input)
+        {
+            return pairEitherSide.IsMatch(input) && twoPairs.IsMatch(input);
         }
     }
 }

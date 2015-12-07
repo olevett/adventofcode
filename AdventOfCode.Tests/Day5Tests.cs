@@ -62,5 +62,27 @@ namespace AdventOfCode.Tests
 
             Assert.Equal(RealNumberOfNiceStrings, count);
         }
+
+        [Theory]
+        [InlineData("", false)]
+        [InlineData("qjhvhtzxzqqjkmpb", true)]
+        [InlineData("xxyxx", true)]
+        [InlineData("ieodomkazucvgmuy", false)]
+        [InlineData("uurcxstgmygtbstg", false)]
+        public void IsNice2(string input, bool expectedValue)
+        {
+            var day5 = new Day5();
+            var actual = day5.IsNice2(input);
+            Assert.Equal(expectedValue, actual);
+        }
+
+        [Fact]
+        public void NumberOfNiceStrings2()
+        {
+            const int RealNumberOfNiceStrings = 55;
+            var day5 = new Day5();
+            var count = day5.NumberOfNiceStrings2(LoadFromResource.Load("AdventOfCode.Tests.TestData.Day5.txt"));
+            Assert.Equal(RealNumberOfNiceStrings, count);
+        }
     }
 }
