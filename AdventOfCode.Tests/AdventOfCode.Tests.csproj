@@ -35,6 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ploeh.AutoFixture, Version=3.37.1.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.3.37.1\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture.Xunit2, Version=3.37.1.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.Xunit2.3.37.1\lib\net45\Ploeh.AutoFixture.Xunit2.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -65,10 +73,18 @@
     <Compile Include="Day3Tests.cs" />
     <Compile Include="Day4Tests.cs" />
     <Compile Include="Day5Tests.cs" />
+    <Compile Include="Day7Operations\OrOperationTests.cs" />
+    <Compile Include="Day7Operations\ConstantTests.cs" />
+    <Compile Include="Day7Operations\AndOperationTests.cs" />
+    <Compile Include="Day7Operations\RightShiftOperationTests.cs" />
+    <Compile Include="Day7Tests.cs" />
+    <Compile Include="Day7Operations\LeftShiftOperationTests.cs" />
+    <Compile Include="Day7Operations\NotOperationTests.cs" />
     <Compile Include="Helpers\StringExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +96,7 @@
       <Name>AdventOfCode</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

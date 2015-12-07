@@ -61,10 +61,10 @@ namespace AdventOfCode.Tests
         {
             var day5 = new Day5();
             var count = day5.NumberOfNiceStrings(TestInput);
-            Assert.Equal(count, NumberOfNiceStrings);
+            Assert.Equal(RealNumberOfNiceStrings, count);
         }
 
-        private const int NumberOfNiceStrings = 255;
+        private const int RealNumberOfNiceStrings = 255;
         private const string TestInput = @"sszojmmrrkwuftyv
 isaljhemltsdzlum
 fujcyucsrxgatisb
