@@ -73,13 +73,9 @@
     <Compile Include="Day3Tests.cs" />
     <Compile Include="Day4Tests.cs" />
     <Compile Include="Day5Tests.cs" />
-    <Compile Include="Day7Operations\OrOperationTests.cs" />
-    <Compile Include="Day7Operations\ConstantTests.cs" />
-    <Compile Include="Day7Operations\AndOperationTests.cs" />
-    <Compile Include="Day7Operations\RightShiftOperationTests.cs" />
+    <Compile Include="Day7Operations\OperationDictionaryTests.cs" />
+    <Compile Include="Day7Operations\OperationTests.cs" />
     <Compile Include="Day7Tests.cs" />
-    <Compile Include="Day7Operations\LeftShiftOperationTests.cs" />
-    <Compile Include="Day7Operations\NotOperationTests.cs" />
     <Compile Include="Helpers\StringExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

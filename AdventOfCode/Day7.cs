@@ -9,6 +9,12 @@ namespace AdventOfCode
     public class Day7
     {
         private const string FunctionSymbol = "->";
+        private readonly OperationDictionary Operations;
+
+        public Day7()
+        {
+            this.Operations = new OperationDictionary();
+        }
 
         public IDictionary<string, string> GetInstructionDictionary(IEnumerable<string> operations)
         {
@@ -18,48 +24,56 @@ namespace AdventOfCode
         public UInt16 Calculate(string name, string input)
         {
             var opCodes = GetInstructionDictionary(input.SplitOnNewLines());
-            var finalOperation = BuildOperation(name, opCodes);
-            return finalOperation.Calculate();
+            var operations = BuildOperations(opCodes);
+            return operations[name].Calculate();
         }
 
-        private IOperation BuildOperation(string name, IDictionary<string, string> operations)
+        private OperationDictionary BuildOperations(IDictionary<string, string> operations)
         {
-            var opString = operations.Single(x => x.Key == name);
-            var operationInputs = opString.Value.Split(' ');
-            switch (operationInputs.Count())
+            var ops = new OperationDictionary();
+            foreach(var operation in operations)
             {
-                case 1:
-                    return ParseConstantOrBuild(operationInputs.Single(), operations);
-                case 2:
-                    if(operationInputs[0] == "NOT") return new NotOperation(ParseConstantOrBuild(operationInputs[1], operations));
-                    throw new InvalidOperationException();
-                case 3:
-                    switch(operationInputs[1])
-                    {
-                        case "LSHIFT": return new LeftShiftOperation(ParseConstantOrBuild(operationInputs[0], operations), ParseConstantOrBuild(operationInputs[2], operations));
-                        case "RSHIFT": return new RightShiftOperation(ParseConstantOrBuild(operationInputs[0], operations), ParseConstantOrBuild(operationInputs[2], operations));
-                        case "AND": return new AndOperation(ParseConstantOrBuild(operationInputs[0], operations), ParseConstantOrBuild(operationInputs[2], operations));
-                        case "OR": return new OrOperation(ParseConstantOrBuild(operationInputs[0], operations), ParseConstantOrBuild(operationInputs[2], operations));
-                        default:
-                            throw new InvalidOperationException();
-                    }
-
-                default:
-                    throw new InvalidOperationException();
+                var operationInputs = operation.Value.Split(' ');
+                switch (operationInputs.Count())
+                {
+                    case 1:
+                         UInt16 parsedInput;
+                         if (UInt16.TryParse(operationInputs[0], out parsedInput))
+                         {
+                             ops[operation.Key] = new Operation(parsedInput);
+                         }
+                         else
+                         {
+                             ops[operation.Key] = new Operation(() => ops[operationInputs[0]], Operation.Load);
+                         }
+                        break;
+                    case 2:
+                        if (operationInputs[0] == "NOT") ops[operation.Key] = new Operation(() => ops[operationInputs[1]], Operation.Not);
+                        break;
+                    case 3:
+                        switch (operationInputs[1])
+                        {
+                            case "LSHIFT":
+                                ops[operation.Key] = new Operation(() => ops[operationInputs[0]], () => ops[operationInputs[2]], Operation.LeftShift);
+                                break;
+                            case "RSHIFT":
+                                ops[operation.Key] = new Operation(() => ops[operationInputs[0]], () => ops[operationInputs[2]], Operation.RightShift);
+                                break;
+                            case "AND":
+                                ops[operation.Key] = new Operation(() => ops[operationInputs[0]], () => ops[operationInputs[2]], Operation.And);
+                                break;
+                            case "OR":
+                                ops[operation.Key] = new Operation(() => ops[operationInputs[0]], () => ops[operationInputs[2]], Operation.Or);
+                                break;
+                            default:
+                                throw new InvalidOperationException();
+                        }
+                        break;
+                    default:
+                        throw new InvalidOperationException();
+                }
             }
-        }
-
-        private IOperation ParseConstantOrBuild(string operationInput, IDictionary<string,string> operations)
-        {
-            UInt16 parsedInput;
-            if (UInt16.TryParse(operationInput, out parsedInput))
-            {
-                return new Constant(parsedInput);
-            }
-            else
-            {
-                return BuildOperation(operationInput, operations);
-            }            
+            return ops;
         }
     }
 }
