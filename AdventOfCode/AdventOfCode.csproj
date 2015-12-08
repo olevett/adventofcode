@@ -48,6 +48,7 @@
     <Compile Include="Day7Operations\Operation.cs" />
     <Compile Include="Day7Operations\OperationDictionary.cs" />
     <Compile Include="Day7.cs" />
+    <Compile Include="Day8.cs" />
     <Compile Include="Helpers\DictionaryExtensions.cs" />
     <Compile Include="Helpers\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

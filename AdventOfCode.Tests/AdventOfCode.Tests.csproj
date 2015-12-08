@@ -69,6 +69,7 @@
     <Compile Include="Day7Operations\OperationDictionaryTests.cs" />
     <Compile Include="Day7Operations\OperationTests.cs" />
     <Compile Include="Day7Tests.cs" />
+    <Compile Include="Day8Tests.cs" />
     <Compile Include="Helpers\LoadFromResource.cs" />
     <Compile Include="Helpers\StringExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,6 +105,9 @@
   <ItemGroup>
     <EmbeddedResource Include="TestData\Day5.txt" />
     <EmbeddedResource Include="TestData\Day6.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestData\Day8.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
