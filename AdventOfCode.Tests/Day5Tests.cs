@@ -25,7 +25,7 @@ namespace AdventOfCode.Tests
         public void ContainsDouble(string input, bool expectedValue)
         {
             var day5 = new Day5();
-            var actual = day5.ContainsDouble(input.BreakToPairs());
+            var actual = day5.ContainsDouble(input);
             Assert.Equal(expectedValue, actual);
         }
 
@@ -35,7 +35,7 @@ namespace AdventOfCode.Tests
         public void ContainsForbiddenPairs(string input, bool expectedValue)
         {
             var day5 = new Day5();
-            var actual = day5.ContainsForbiddenPairs(input.BreakToPairs());
+            var actual = day5.ContainsForbiddenPairs(input);
             Assert.Equal(expectedValue, actual);
         }
 

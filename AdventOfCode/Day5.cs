@@ -13,10 +13,13 @@ namespace AdventOfCode
         private static readonly IEnumerable<char> Vowels = new List<char> { 'a', 'e', 'i', 'o', 'u' };
         private static readonly IEnumerable<string> ForbiddenPairs = new List<string> { "ab", "cd", "pq", "xy" };
 
+        private Regex pairEitherSide = new Regex(@"(\w)\w\1");
+        private Regex twoPairs = new Regex(@"(\w\w)\w*\1");
+        private Regex letterPair = new Regex(@"(\w)\1");
+                
         public bool StringIsNice(string input)
         {
-            var split = input.BreakToPairs();
-            return ContainsAtLeastThreeVowels(input) && ContainsDouble(split) && !ContainsForbiddenPairs(split);
+            return ContainsAtLeastThreeVowels(input) && ContainsDouble(input) && !ContainsForbiddenPairs(input);
         }
 
         public bool ContainsAtLeastThreeVowels(string input)
@@ -24,14 +27,18 @@ namespace AdventOfCode
             return input.Where(c => Vowels.Contains(c)).Count() >= 3;
         }
 
-        public bool ContainsDouble(IEnumerable<string> pairs)
+        public bool ContainsDouble(string input)
         {
-            return pairs.Any(p => p[0] == p[1]);
+            return letterPair.IsMatch(input);
         }
 
-        public bool ContainsForbiddenPairs(IEnumerable<string> pairs)
+        public bool ContainsForbiddenPairs(string input)
         {
-            return pairs.Any(p => ForbiddenPairs.Contains(p));
+            foreach (var pair in ForbiddenPairs)
+            {
+                if (input.Contains(pair)) return true;
+            }
+            return false;
         }
 
         public int NumberOfNiceStrings(string input)
@@ -43,9 +50,7 @@ namespace AdventOfCode
         {
             return input.SplitOnNewLines().Count(IsNice2);
         }
-        private Regex pairEitherSide = new Regex(@"(\w)\w\1");
-        private Regex twoPairs = new Regex(@"(\w\w)\w*\1");
-
+        
         public bool IsNice2(string input)
         {
             return pairEitherSide.IsMatch(input) && twoPairs.IsMatch(input);

@@ -17,13 +17,5 @@ namespace AdventOfCode.Tests.Helpers
             var actual = input.SplitOnNewLines().Count();
             Assert.Equal(expected, actual);
         }
-
-        [Theory]
-        [InlineData("abc", new[] { "ab", "bc"})]
-        public void BreakToPairsWorks(string input, IEnumerable<string> pairs)
-        {
-            var broken = input.BreakToPairs();
-            Assert.Equal(pairs, broken);
-        }
     }
 }
