@@ -63,7 +63,7 @@ namespace AdventOfCode.Tests
 
         [Theory]
         [InlineData("abcdefgh", "abcdffaa")]
-        [InlineData("hijklmn", "ghjaabcc")]
+        [InlineData("ghijklmn", "ghjaabcc")]
         public void FindNextPassword(string input, string expected)
         {
             var day11 = new Day11();
