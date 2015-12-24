@@ -9,12 +9,6 @@ namespace AdventOfCode
     public class Day7
     {
         private const string FunctionSymbol = "->";
-        private readonly OperationDictionary Operations;
-
-        public Day7()
-        {
-            this.Operations = new OperationDictionary();
-        }
 
         public IDictionary<string, string> GetInstructionDictionary(IEnumerable<string> operations)
         {
@@ -28,7 +22,7 @@ namespace AdventOfCode
             return operations[name].Calculate();
         }
 
-        private OperationDictionary BuildOperations(IDictionary<string, string> operations)
+        private static OperationDictionary BuildOperations(IEnumerable<KeyValuePair<string, string>> operations)
         {
             var ops = new OperationDictionary();
             foreach(var operation in operations)

@@ -8,17 +8,17 @@ namespace AdventOfCode.Day7Operations
 
         public Operation(UInt16 input)
         {
-            this.calculation = new Lazy<UInt16>(() => input);
+            calculation = new Lazy<UInt16>(() => input);
         }
 
         public Operation(Func<Operation> input, Func<Operation, UInt16> operation)
         {
-            this.calculation = new Lazy<UInt16>(() => operation(input()));
+            calculation = new Lazy<UInt16>(() => operation(input()));
         }
 
         public Operation(Func<Operation> left, Func<Operation> right, Func<Operation, Operation, UInt16> operation)
         {
-            this.calculation = new Lazy<UInt16>(() => operation(left(), right()));
+            calculation = new Lazy<UInt16>(() => operation(left(), right()));
         }
 
         public UInt16 Calculate()

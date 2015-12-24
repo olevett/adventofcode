@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode.Day7Operations
 {
@@ -12,19 +9,11 @@ namespace AdventOfCode.Day7Operations
         {
             get
             {
-                if (!ContainsKey(key))
-                {
-                    UInt16 input;
-                    if (UInt16.TryParse(key, out input))
-                    {
-                        this[key] = new Operation(input);
-                    }
-                    else
-                    {
-                        this[key] = new Operation(0);
-                    }
+                if (ContainsKey(key)) return base[key];
 
-                }
+                UInt16 input;
+                this[key] = UInt16.TryParse(key, out input) ? new Operation(input) : new Operation(0);
+                
                 return base[key];
             }
             set
