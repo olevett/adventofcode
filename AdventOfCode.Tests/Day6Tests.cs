@@ -19,7 +19,7 @@ namespace AdventOfCode.Tests
         }
 
         [Fact]
-        public void TotalTurnedOn()
+        public void TotalTurnedOnActual()
         {
             var input = LoadFromResource.Load("AdventOfCode.Tests.TestData.Day6.txt");
             const int expected = 543903;
@@ -44,7 +44,7 @@ namespace AdventOfCode.Tests
         }
 
         [Fact]
-        public void TotalBrightness()
+        public void TotalBrightnessActual()
         {
             var input = LoadFromResource.Load("AdventOfCode.Tests.TestData.Day6.txt");
             const int expected = 14687245; 
